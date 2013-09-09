@@ -1,0 +1,70 @@
+<%- model_class = TblMsgNetComment -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => model_class.model_name.human%></h3>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+<!--
+      <th><%= model_class.human_attribute_name(:serialNumber) %></th>
+      <th><%= model_class.human_attribute_name(:workNum) %></th>
+-->
+      <th><%= model_class.human_attribute_name(:dateTime) %></th>
+      <th><%= model_class.human_attribute_name(:handlingUser) %></th>
+<!--
+      <th><%= model_class.human_attribute_name(:hdUserPhone) %></th>
+      <th><%= model_class.human_attribute_name(:sName) %></th>
+      <th><%= model_class.human_attribute_name(:area) %></th>
+-->
+      <th><%= model_class.human_attribute_name(:responses) %></th>
+      <th><%= model_class.human_attribute_name(:measure) %></th>
+      <th><%= model_class.human_attribute_name(:isOver) %></th>
+<!--      <th><%= model_class.human_attribute_name(:created_at) %></th> -->
+<!--      <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @tbl_msg_net_comments.each do |tbl_msg_net_comment| %>
+      <tr>
+        <td><%= link_to tbl_msg_net_comment.id, tbl_msg_net_comment_path(tbl_msg_net_comment,:search=>params[:search]) %></td>
+<!--
+        <td><%= tbl_msg_net_comment.serialNumber %></td>
+        <td><%= tbl_msg_net_comment.workNum %></td>
+-->
+        <td><%= tbl_msg_net_comment.dateTime %></td>
+        <td><%= tbl_msg_net_comment.handlingUser %></td>
+<!--
+        <td><%= tbl_msg_net_comment.hdUserPhone %></td>
+        <td><%= tbl_msg_net_comment.sName %></td>
+        <td><%= tbl_msg_net_comment.area %></td>
+-->
+        <td><%= tbl_msg_net_comment.responses %></td>
+        <td><%= tbl_msg_net_comment.measure %></td>
+        <td><%= tbl_msg_net_comment.isOver %></td>
+<!--
+        <td><%=l tbl_msg_net_comment.created_at %></td>
+-->
+<!--
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_tbl_msg_net_comment_path(tbl_msg_net_comment), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      tbl_msg_net_comment_path(tbl_msg_net_comment),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!--
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_tbl_msg_net_comment_path,
+            :class => 'btn btn-primary' %>
+-->
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              tbl_msg_net_syns_path, :class => 'btn'  %>
+

@@ -1,0 +1,116 @@
+cn:
+  helpers:
+    links:
+      #branch: 分公司
+  activerecord:
+    #by binary models and attributes
+    models:
+       user: "用户"
+       branch: "分公司"
+       department: "部门"
+       tbl_msg_net_syn: "网络工单"
+       tbl_msg_net_comment: "网络回单"
+    attributes: 
+      user:
+        name: "姓名"
+        email: "电子邮件"
+        password: "密码"
+        password_confirmation: "重复密码"
+        position: "职务"
+        role_id: "角色"
+        job_no: "工号"
+        note: "备注"
+        branch_id: "分公司"
+        department_id: "部门"
+        mobile: "手机"  
+        remember_me: "记住我"  
+        created_at: "创建时间"  
+      branch:
+        title: "名称"
+        created_at: "创建时间"  
+      department:
+        title: "名称"
+        branch_id: "分公司"
+        created_at: "创建时间"  
+      tbl_msg_net_syn:
+        addrName: "投诉地点"
+        col_date: "发单日期"
+        col_sent_datetime: "同步日期"
+        col_state: "工单状态"
+        col_syn_state: "工单状态"
+        col_userdes: "userDes"
+        customerType: "客户类型"
+        expedited: "是否加急"
+        expeditedTime: "加急时限"
+        isReject: "是否驳回"
+        netMark: "网络标识"
+        phenomenon: "投诉现象"
+        phoneNum: "客户号码"
+        problem: "问题详细"
+        problemType: "问题类别"
+        rejectReason: "驳回原因"
+        sendUser: "派单人"
+        sendUserPhone: "派单人电话"
+        serialNumber: "流水号"
+        terminal: "终端型号"
+        location: "楼层房号"
+        duration: "问题持续时间"
+      tbl_msg_net_comment:
+        area: "归属地"
+        dateTime: "回单时间"
+        handlingUser: "处理人"
+        hdUserPhone: "处理人电话"
+        isOver: "是否结单"
+        measure: "解决措施"
+        responses: "网络部回复意见"
+        sName: "分部"
+        serialNumber: "流水号"
+        workNum: "回单编号"
+        col_id: "ID"
+
+  users:
+    edit:
+      title: "编辑用户"
+    new:
+      title: "新建用户"
+    index:
+      confirm: "确认删除？删除后相关关联字段将会清除。"
+    show:
+      confirm: "确认删除？删除后相关关联字段将会清除。"
+  branches:
+    edit:
+      title: "编辑公司"
+    new:
+      title: "新建公司"
+    index:
+      confirm: "确认删除？删除后下级单位以及人员将会被删除并不可恢复！！"
+    show:
+      confirm: "确认删除？删除后下级单位以及人员将会被删除并不可恢复！！"
+  departments:
+    edit:
+      title: "编辑部门"
+    new:
+      title: "新建部门"
+    index:
+      confirm: "确认删除？删除后下级单位以及人员将会被删除并不可恢复！！"
+    show:
+      confirm: "确认删除？删除后下级单位以及人员将会被删除并不可恢复！！"
+  tbl_msg_net_syns:
+    edit:
+      title: "编辑网络工单"
+    new:
+      title: "新建网络工单"
+    index:
+      confirm: "确认删除？"
+    show:
+      confirm: "确认删除？"
+  tbl_msg_net_comments:
+    edit:
+      title: "编辑网络回单"
+    new:
+      title: "新建网络回单"
+    index:
+      confirm: "确认删除？"
+    show:
+      confirm: "确认删除？"
+

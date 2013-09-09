@@ -1,0 +1,75 @@
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %> 
+   <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'password_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password_confirmation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'password_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :mobile, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mobile, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :position, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :position, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :role_id, :class => 'control-label' %>
+    <div class="controls">
+       <%= f.select  :role_id, options_for_select(User.authorizeRole(current_user.role_id))%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :branch_id, :class => 'control-label' %>
+    <div class="controls">
+<%= f.select(:branch_id,options_from_collection_for_select(Branch.all,:id,:title,:selected=>current_user.branch_id), {:include_blank => ''},{:disabled =>current_user.role_id!=1}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :department_id, :class => 'control-label' %>
+    <div class="controls">
+<%= f.select(:department_id,options_from_collection_for_select(Department.all,:id,:title,:selected=>@user.department_id), {:include_blank => ''}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :job_no, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :job_no, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :note, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :note, :class => 'text_area' ,:rows=>'3'%>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
+<% end %>

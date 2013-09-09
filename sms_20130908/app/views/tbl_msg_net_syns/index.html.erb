@@ -1,0 +1,109 @@
+<%- model_class = TblMsgNetSyn -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => model_class.model_name.human %></h3>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <!--
+      <th><%= model_class.human_attribute_name(:serialNumber) %></th-->
+      <th><%= model_class.human_attribute_name(:phoneNum) %></th>
+      <!--
+      <th><%= model_class.human_attribute_name(:customerType) %></th>
+      <th><%= model_class.human_attribute_name(:terminal) %></th>
+      <th><%= model_class.human_attribute_name(:netMark) %></th>
+      <th><%= model_class.human_attribute_name(:problemType) %></th>
+      -->
+      <th><%= model_class.human_attribute_name(:phenomenon) %></th>
+      <!--
+      <th><%= model_class.human_attribute_name(:problem) %></th>
+      <th><%= model_class.human_attribute_name(:addrName) %></th>
+      <th><%= model_class.human_attribute_name(:expedited) %></th>
+      <th><%= model_class.human_attribute_name(:expeditedTime) %></th>
+      <th><%= model_class.human_attribute_name(:sendUser) %></th>
+      <th><%= model_class.human_attribute_name(:sendUserPhone) %></th>
+      -->
+      <th><%= model_class.human_attribute_name(:isReject) %></th>
+  <!--
+      <th><%= model_class.human_attribute_name(:rejectReason) %></th>
+      <th><%= model_class.human_attribute_name(:col_userdes) %></th>
+-->
+      <th><%= model_class.human_attribute_name(:col_date) %></th>
+      <th><%= model_class.human_attribute_name(:col_state) %></th>
+      <th>回单</th>
+<!--
+      <th><%= model_class.human_attribute_name(:col_syn_state) %></th>
+      <th><%= model_class.human_attribute_name(:col_sent_datetime) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+-->
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @tbl_msg_net_syns.each do |tbl_msg_net_syn| %>
+      <tr>
+        <td><%= link_to tbl_msg_net_syn.id, tbl_msg_net_syn_path(tbl_msg_net_syn) %></td>
+<!--
+        <td><%= tbl_msg_net_syn.serialNumber %></td>-->
+        <td><%= tbl_msg_net_syn.phoneNum %></td>
+<!--
+        <td><%= tbl_msg_net_syn.customerType %></td>
+        <td><%= tbl_msg_net_syn.terminal %></td>
+        <td><%= tbl_msg_net_syn.netMark %></td>
+        <td><%= tbl_msg_net_syn.problemType %></td>
+-->
+        <td><%= tbl_msg_net_syn.phenomenon %></td>
+<!--
+        <td><%= tbl_msg_net_syn.problem %></td>
+        <td><%= tbl_msg_net_syn.addrName %></td>
+        <td><%= tbl_msg_net_syn.expedited %></td>
+        <td><%= tbl_msg_net_syn.expeditedTime %></td>
+        <td><%= tbl_msg_net_syn.sendUser %></td>
+        <td><%= tbl_msg_net_syn.sendUserPhone %></td>
+-->
+        <td><%= tbl_msg_net_syn.isReject %></td>
+<!--
+        <td><%= tbl_msg_net_syn.rejectReason %></td>
+        <td><%= tbl_msg_net_syn.col_userdes %></td>
+-->
+        <td><%=if(!tbl_msg_net_syn.col_date.blank?)
+                l tbl_msg_net_syn.col_date.localtime
+               end %></td>
+        <td><%= tbl_msg_net_syn.col_state %></td>
+        <td><%= link_to TblMsgNetComment.where(:serialNumber=>tbl_msg_net_syn.serialNumber).count, tbl_msg_net_comments_path(:search=>tbl_msg_net_syn.serialNumber) %></td>
+<!--
+        <td><%= tbl_msg_net_syn.col_syn_state %></td>
+        <td><%= tbl_msg_net_syn.col_sent_datetime %></td>
+        <td><%= tbl_msg_net_syn.created_at %></td>
+-->
+        <td>
+<!--
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_tbl_msg_net_syn_path(tbl_msg_net_syn), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      tbl_msg_net_syn_path(tbl_msg_net_syn),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+-->
+    
+          <%= if(tbl_msg_net_syn.col_syn_state!=3)
+                link_to t('.close', :default => t("helpers.links.close")),
+                      close_tbl_msg_net_syn_path(tbl_msg_net_syn),
+                      :method => :put,
+                      :confirm => '确认闭单？',
+                      :class => 'btn btn-mini btn-danger'
+              end
+           %>
+               
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @tbl_msg_net_syns %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_tbl_msg_net_syn_path,
+            :class => 'btn btn-primary' %>

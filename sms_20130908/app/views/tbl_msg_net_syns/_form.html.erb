@@ -1,0 +1,211 @@
+<% content_for :head do %>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#select_problemType").change(function()
+{
+	if($("#select_problemType").val() == "语音"){
+		$("#select_phenomenon").empty();
+		$("<option value='无信号显示'>无信号显示</option>").appendTo("#select_phenomenon");
+		$("<option value='信号不稳定'>信号不稳定</option>").appendTo("#select_phenomenon");
+		$("<option value='信号弱'>信号弱</option>").appendTo("#select_phenomenon");
+		$("<option value='通话断续'>通话断续</option>").appendTo("#select_phenomenon");
+		$("<option value='通话掉话'>通话掉话</option>").appendTo("#select_phenomenon");
+		$("<option value='通话单通'>通话单通</option>").appendTo("#select_phenomenon");
+		$("<option value='通话回音'>通话回音</option>").appendTo("#select_phenomenon");
+		$("<option value='通话杂音'>通话杂音</option>").appendTo("#select_phenomenon");
+	}else{
+		$("#select_phenomenon").empty();
+		$("<option value='无信号覆盖且无法连接'>无信号覆盖且无法连接</option>").appendTo("#select_phenomenon");
+		$("<option value='上网断线'>上网断线</option>").appendTo("#select_phenomenon");
+		$("<option value='网速慢'>网速慢</option>").appendTo("#select_phenomenon");
+		$("<option value='有信号覆盖但无法连接'>有信号覆盖但无法连接</option>").appendTo("#select_phenomenon");
+	}
+});
+});
+</script>
+<% end %>
+
+<%= form_for @tbl_msg_net_syn, :html => { :class => 'form-horizontal' } do |f| %>
+<!--
+  <div class="control-group">
+    <%= f.label :serialNumber, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :serialNumber, :class => 'number_field' %>
+    </div>
+  </div>
+-->
+  <div class="control-group">
+    <%= f.label :phoneNum, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phoneNum, :class => 'text_field' %>
+    </div>
+  </div>
+<!--
+  <div class="control-group">
+    <%= f.label :customerType, :class => 'control-label' %>
+    <div class="controls">
+      <% f.text_field :customerType, :class => 'text_field' %>
+	<select name="tbl_msg_net_syn[customerType]">
+     	 <option value="集团关键人">集团关键人</option>
+     	 <option value="集团成员">集团成员</option>
+ 	     <option value="钻卡客户">钻卡客户</option>
+	     <option value="金卡客户">金卡客户</option>
+	     <option value="银卡客户">银卡客户</option>
+	     <option value="贵宾卡客户">贵宾卡客户</option>
+	     <option value="A类中高端客户">A类中高端客户</option>
+	     <option value="B类中高端客户">B类中高端客户</option>
+	     <option value="C类中高端客户">C类中高端客户</option>
+	     <option value="普通客户" selected="selected">普通客户</option>
+	  </select>
+    </div>
+  </div>
+-->
+  <div class="control-group">
+    <%= f.label :terminal, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :terminal, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :netMark, :class => 'control-label' %>
+    <div class="controls">
+      <% f.text_field :netMark, :class => 'text_field' %>
+	<select name="tbl_msg_net_syn[netMark]">
+     	 <option value="T">T</option>
+     	 <option value="H">H</option>
+ 	     <option value="G">G</option>
+	     <option value="E">E</option>
+	     <option value="不清楚" selected="selected">不清楚</option>
+	  </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :problemType, :class => 'control-label' %>
+    <div class="controls">
+      <% f.text_field :problemType, :class => 'text_field' %>
+	  <select id="select_problemType" name="tbl_msg_net_syn[problemType]">
+     	 <option value="语音">语音</option>
+     	 <option value="手机上网" >手机上网</option>
+	  </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phenomenon, :class => 'control-label' %>
+    <div class="controls">
+      <% f.text_field :phenomenon, :class => 'text_field' %>
+      <select id="select_phenomenon" name="tbl_msg_net_syn[phenomenon]">
+     	 <option value="无信号显示">无信号显示</option>
+     	 <option value="信号不稳定">信号不稳定</option>
+ 	     <option value="信号弱">信号弱</option>
+	     <option value="通话断续">通话断续</option>
+	     <option value="通话掉话">通话掉话</option>
+	     <option value="通话单通">通话单通</option>
+	     <option value="通话回音">通话回音</option>
+	     <option value="通话杂音">通话杂音</option>
+	  </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :problem, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :problem, :class => 'text_area',:rows=>'3' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :addrName, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :addrName, :class => 'text_area',:rows=>'3' %>
+    </div>
+  </div> 
+  <div class="control-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location, :class => 'text_field' %>注意：必填项
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :duration, :class => 'control-label' %>
+    <div class="controls">
+       <input type="radio" name="duration_radio" value = "occasionally">偶尔一次<br><br>
+      <%= f.text_field :duration, :class => 'text_field' %>具体几天几月
+    </div>
+  </div>
+
+<!--
+  <div class="control-group">
+    <%= f.label :expedited, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :expedited, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :expeditedTime, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :expeditedTime, :class => 'text_field' %>
+    </div>
+  </div>
+-->
+   <%= f.hidden_field :sendUser, :value => User.find(cookies[:user_id]).name %>
+   <%= f.hidden_field :sendUserPhone, :value => cookies[:manager] %>
+<!--
+  <div class="control-group">
+    <%= f.label :sendUser, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sendUser, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sendUserPhone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sendUserPhone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :isReject, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :isReject, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :rejectReason, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :rejectReason, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :col_userdes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :col_userdes, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :col_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :col_date, :class => 'datetime_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :col_state, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :col_state, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :col_syn_state, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :col_syn_state, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :col_sent_datetime, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :col_sent_datetime, :class => 'datetime_select' %>
+    </div>
+  </div>
+-->
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tbl_msg_net_syns_path, :class => 'btn' %>
+  </div>
+<% end %>

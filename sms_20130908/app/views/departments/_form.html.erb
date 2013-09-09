@@ -1,0 +1,20 @@
+<%= form_for @department, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :branch_id, :class => 'control-label' %>
+    <div class="controls">
+<%= f.select(:branch_id,options_from_collection_for_select(Branch.all,:id,:title,:selected=>@department.branch_id)) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                departments_path, :class => 'btn' %>
+  </div>
+<% end %>

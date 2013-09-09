@@ -1,0 +1,68 @@
+<%= form_for @tbl_msg_net_comment, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :serialNumber, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :serialNumber, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :workNum, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :workNum, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :dateTime, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :dateTime, :class => 'datetime_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :handlingUser, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :handlingUser, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hdUserPhone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hdUserPhone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sName, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sName, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :area, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :area, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :responses, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :responses, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :measure, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :measure, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :isOver, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :isOver, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tbl_msg_net_comments_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:
+  adapter: jdbc
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  username: sms
+  password: sms
+#  url: jdbc:sqlserver://10.70.11.74:1434;databaseName=just_sms
+  url: jdbc:sqlserver://127.0.0.1;databaseName=sms
+
+test:
+  adapter: jdbc
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  username: sms
+  password: sms
+  url: jdbc:sqlserver://127.0.0.1;databaseName=sms
+
+
+production:
+  adapter: jdbc
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  username: sms
+  password: sms
+  url: jdbc:sqlserver://127.0.0.1;databaseName=sms
