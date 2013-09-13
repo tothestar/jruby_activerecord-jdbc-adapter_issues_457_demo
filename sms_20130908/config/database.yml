@@ -4,7 +4,7 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: jdbc
+  adapter: mssql
   driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
   username: sms
   password: sms
@@ -12,7 +12,7 @@ development:
   url: jdbc:sqlserver://127.0.0.1;databaseName=sms
 
 test:
-  adapter: jdbc
+  adapter: mssql
   driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
   username: sms
   password: sms
@@ -20,7 +20,7 @@ test:
 
 
 production:
-  adapter: jdbc
+  adapter: mssql
   driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
   username: sms
   password: sms
